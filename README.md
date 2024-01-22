@@ -7,9 +7,6 @@ A command-line application using Node.js to generate README.md files. Written in
 Image:
 ![Alt text](./assets/example-readme.ss.png)
 
-Walk-through video:
-<video src="readme-generator-tutorial.mp4" controls title="walkthrough-video"></video>
-
 Link to video on Google Drive:
 https://drive.google.com/file/d/11SPskHcYTRtemNjrM8o5O6m8Z_g541Es/view
 
