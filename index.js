@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 
-const { default: inquirer } = require("inquirer");
+const inquirer = require("inquirer");
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 
@@ -14,7 +15,7 @@ const questions = [
    {
     type: 'input',
     name: 'description',
-    message: 'Please provide a shprt descri[tins of your project!'
+    message: 'Please provide a short description of your project!'
    },
    {
     type: 'input',
@@ -24,7 +25,7 @@ const questions = [
    {
     type: 'input',
     name: 'credits',
-    message: '(optional) List any collaborators used, any 3rd party assets used or any tutorials followed.'
+    message: 'List any collaborators used, any 3rd party assets used or any tutorials followed.'
    },
    {
     type: 'input',
@@ -40,7 +41,7 @@ const questions = [
     type: 'list',
     name: 'license',
     message: 'Choose a license for your project! Or not.',
-    choices: ['MIT License', 'Apache 2.0', 'GPL 3.0', 'Mozilla Public 2.0', 'None']
+    choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'Mozilla Public 2.0', 'None']
    }
 ];
 
@@ -61,8 +62,8 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then(function(answers){
-        const data = JSON.stringify(answers, null, ' ');
-        writeToFile('README.md', data);
+        const markdownContent = generateMarkdown(answers);
+        writeToFile('README.md', markdownContent);
     }).catch(function(error){
         console.error('An error occurred: ');
     });
